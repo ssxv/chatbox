@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	  <title>Chatbox</title>
+	  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+	  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+	  <ul class="pages">
+			<li class="chat page">
+				  <div class="chatArea">
+						<ul class="messages"></ul>
+				  </div>
+				  <input class="inputMessage" placeholder="Type a message..."/>
+			</li>
+			<li class="login page">
+				  <div class="form">
+						<h3 class="title">Chatbox</h3>
+						<input class="usernameInput" type="text" maxlength="20" placeholder="Your Name..."/>
+						<input class="colorSelector" type="color" value="#2471A3" />
+				  </div>
+			</li>
+	  </ul>
+
+	  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	  <script src="/socket.io/socket.io.js"></script>
+	  <script src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "chatbox",
+  "version": "1.0.0",
+  "description": "chat app using node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssxv/chatbox.git"
+  },
+  "author": "satyendra singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssxv/chatbox/issues"
+  },
+  "homepage": "https://github.com/ssxv/chatbox#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.2"
+  }
+}
