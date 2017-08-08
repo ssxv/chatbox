@@ -82,6 +82,11 @@ ul {
   font-weight: 100;
 }
 
+.login.page .googleSignin {
+  width: 120px;
+  margin: 0px auto 10px auto;
+}
+
 /* Chat page */
 
 .chat.page {

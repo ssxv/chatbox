@@ -1,5 +1,13 @@
-	  
-$(function() {
+var username;
+
+function onSignIn(googleUser) {
+	var profile = googleUser.getBasicProfile();
+	username = profile.getName();
+	console.log('Full Name: ' + profile.getName());
+	setUsername();
+};
+
+
 	var FADE_TIME = 500; // ms
 	var TYPING_TIMER_LENGTH = 1000; // ms
 	var MESSAGECOLOR = '#ffffff';
@@ -18,7 +26,7 @@ $(function() {
 	var $chatPage = $('.chat.page'); // The chatroom page
 
 	// Prompt for setting a username
-	var username;
+	
 	var connected = false;
 	var typing = false;
 	var lastTypingTime;
@@ -48,7 +56,7 @@ $(function() {
 
 	// Sets the client's username
 	function setUsername () {
-		username = cleanInput($usernameInput.val().trim());
+		// username = cleanInput($usernameInput.val().trim());
 
 		// If the username is valid
 		if (username) {
@@ -462,4 +470,3 @@ $(function() {
 	socket.on('stop typing', function (data) {
 		removeChatTyping(data);
 	});
-});
