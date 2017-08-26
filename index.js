@@ -3,8 +3,8 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-http.listen(3010, function(){
-  console.log('listening on *:3010');
+http.listen(3010, function () {
+	console.log('listening on *:3010');
 });
 
 // Routing
@@ -22,32 +22,32 @@ io.on('connection', function (socket) {
 	socket.on('new message', function (data) {
 		// we tell the client to execute 'new message'
 		socket.broadcast.emit('new message', {
-			  username: socket.username,
-			  message: data
+			username: socket.username,
+			message: data
 		});
 	});
 
 
 	// when the client emits 'add user', this listens and executes
 	socket.on('add user', function (username) {
-		
+
 		if (addedUser) return;
 
-		
+
 		// we store the username in the socket session for this client
 		socket.username = username;
-		console.log('JOINED : '+ username);
+		console.log('JOINED : ' + username);
 		++numUsers;
 		addedUser = true;
 		socket.emit('login', {
-				numUsers: numUsers
+			numUsers: numUsers
 		});
-		
-		
+
+
 		// echo globally (all clients) that a person has connected
 		socket.broadcast.emit('user joined', {
-			  username: socket.username,
-			  numUsers: numUsers
+			username: socket.username,
+			numUsers: numUsers
 		});
 	});
 
@@ -55,7 +55,7 @@ io.on('connection', function (socket) {
 	// when the client emits 'typing', we broadcast it to others
 	socket.on('typing', function () {
 		socket.broadcast.emit('typing', {
-				username: socket.username
+			username: socket.username
 		});
 	});
 
@@ -63,7 +63,7 @@ io.on('connection', function (socket) {
 	// when the client emits 'stop typing', we broadcast it to others
 	socket.on('stop typing', function () {
 		socket.broadcast.emit('stop typing', {
-			  username: socket.username
+			username: socket.username
 		});
 	});
 
@@ -71,14 +71,14 @@ io.on('connection', function (socket) {
 	// when the user disconnects.. perform this
 	socket.on('disconnect', function () {
 		if (addedUser) {
-			  --numUsers;
+			--numUsers;
 
-			  console.log('LEFT : '+ socket.username);
-			  // echo globally that this client has left
-			  socket.broadcast.emit('user left', {
-					username: socket.username,
-					numUsers: numUsers
-			  });
+			console.log('LEFT : ' + socket.username);
+			// echo globally that this client has left
+			socket.broadcast.emit('user left', {
+				username: socket.username,
+				numUsers: numUsers
+			});
 		}
 	});
 });
